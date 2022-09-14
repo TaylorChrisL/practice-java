@@ -4,6 +4,8 @@ public class Order {
 	String customer;
 	String product;
 	int quantity;
+
+	static double taxRate = 0.05;
 	
 	public Order(MyDate d, double amt, String c, String p, int q){
 		orderDate=d;
@@ -15,5 +17,20 @@ public class Order {
 	
 	public String toString(){
 		return quantity + " ea. " + product + " for " + customer; 
+	}
+
+	public static void setTaxRate(double newRate) {
+		taxRate = newRate;
+	}
+
+	public static void computeTaxOn(double anAmount) {
+		System.out.println("The tax for " + anAmount + " is: " +
+				anAmount * Order.taxRate);
+	}
+
+	public double computeTax() {
+		System.out.println("The tax for this order is: " + orderAmount
+				* Order.taxRate);
+		return orderAmount * Order.taxRate;
 	}
 }
